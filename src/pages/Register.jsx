@@ -11,10 +11,12 @@ import {
 }
     from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
 
     const [error, setError] = useState(false)
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -61,7 +63,8 @@ const Register = () => {
                             email,
                             photoURL: downloadURL
                         })
-                        await setDoc(doc(db, "users", res.user.uid), {})
+                        await setDoc(doc(db, "userChats", res.user.uid), {});
+                        navigate('/')
                     })
                 }
             )
@@ -91,7 +94,7 @@ const Register = () => {
                     <button>Sign up</button>
                     {error && <span>Error</span>}
                 </form>
-                <p>You do have an account? Login</p>
+                <p>You do have an account? <Link to='/login'>Login</Link></p>
             </div>
         </div>
     )
