@@ -35,7 +35,7 @@ const Login = () => {
 
 
     return (
-        <div className='formContainner'>
+        <div className='formContainer'>
             <div className='formWrapper'>
                 <span className='logo'>Laytar Chat</span>
                 <span className='title'>Register</span>
